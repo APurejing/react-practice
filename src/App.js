@@ -1,13 +1,7 @@
-/* global React ReactDOM */
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Pet from './Pet';
 
-const Pet = (props) => {
-  console.log("-props-", props);
-  return React.createElement("div", {}, [
-    React.createElement("h2", {}, props.name),
-    React.createElement("h3", {}, props.animal),
-    React.createElement("h3", {}, props.breed),
-  ]);
-};
 // 创建组件，组建名开头大写
 const App = () => {
   return React.createElement("div", {}, [
