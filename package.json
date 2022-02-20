@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "parcel src/index.html",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/APurejing/react-practice/issues"
   },
-  "homepage": "https://github.com/APurejing/react-practice#readme"
+  "homepage": "https://github.com/APurejing/react-practice#readme",
+  "devDependencies": {
+    "parcel": "^1.12.3",
+    "prettier": "^2.5.1"
+  }
 }
