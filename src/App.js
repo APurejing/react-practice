@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Pet from './Pet';
+// import Pet from './Pet';
+import SearchParams from './SearchParams';
 
 // 创建组件，组建名开头大写
 // const App = () => {
@@ -28,12 +29,13 @@ const App = () => {
   return (
     <div>
       <h1>Adopt Me"</h1>
-      <Pet name="Luna" animal="Dog" breed="Havanese" />
+      {/* <Pet name="Luna" animal="Dog" breed="Havanese" />
       <Pet name="Pepper" animal="Bird" breed="Cockatiel" />
-      <Pet name="Sudo" animal="Dog" breed="Wheaten Terrier" />
+      <Pet name="Sudo" animal="Dog" breed="Wheaten Terrier" /> */}
+      <SearchParams />
     </div>
   );
 };
 // 下面的React.createElement是在创建组件的实例
 // ReactDOM.render(React.createElement(App), document.getElementById("root")); // App,{},null 后面非必选可省略
-ReactDOM.render(<App/>, document.getElementById("root")); 
+ReactDOM.render(<App />, document.getElementById("root")); 
