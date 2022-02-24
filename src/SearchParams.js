@@ -2,26 +2,28 @@ import { useState, useEffect } from "react";
 import Pet from "./Pet";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
+
 const SearchParams = () => {
-  const [a, setA] = useState(false);
-  const [location, setLocation] = useState("Seattle,WA");
+  const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
-  const [pets, stePets] = useState([]);
-
+  const [pets, setPets] = useState([]);
   const breeds = []; // 从API获取
   // const location = "Seattle,WA";
 
-  // useEffect(() => {
-  //   requestPets();
-  // });
+  useEffect(() => {
+    requestPets();
+  }, []);
 
-  // async function requestPets() {
-  //   const res = await fetch(
-  //     `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=$
-  //           {location}&breed=${breed}`
-  //   );
-  // }
+  async function requestPets() {
+    console.log("函数开始");
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+    );
+    const json = await res.json();
+    console.log("pets--", json.pets);
+    setPets(json.pets);
+  }
 
   return (
     <div className="search-params">
@@ -43,7 +45,7 @@ const SearchParams = () => {
             onChange={(e) => setAnimal(e.target.value)}
             onBlur={(e) => setAnimal(e.target.value)}
           >
-            <option />
+            <option value=""></option>
             {ANIMALS.map((animal) => (
               <option value={animal} key={animal}>
                 {animal}
@@ -71,6 +73,15 @@ const SearchParams = () => {
 
         <button>Submit</button>
       </form>
+
+      {pets.map((pet) => (
+        <Pet
+          name={pet.name}
+          animal={pet.animal}
+          breed={pet.breed}
+          key={pet.id}
+        />
+      ))}
     </div>
   );
 };
